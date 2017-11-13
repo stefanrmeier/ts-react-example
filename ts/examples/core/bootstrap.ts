@@ -1,7 +1,7 @@
-import {Store, createStore, applyMiddleware} from 'redux';
+import {Store, createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import createSagaMiddleware from 'redux-saga'
 import {fork} from 'redux-saga/effects';
-import { combineReducers } from 'redux'
+import DevTools from 'lib/core/DevTools';
 import { reducer as formReducer } from 'redux-form'
 import {SecurityReducer} from 'lib/core/security/security-reducers'
 import {CoreReducer} from 'lib/core/CoreDucks'
@@ -17,9 +17,14 @@ const reducer = combineReducers({
 
 export function configureStore() : Store<any> {
     const sagaMiddleware = createSagaMiddleware();
-    const createStoreWithMiddleware = applyMiddleware(sagaMiddleware)(createStore);
-    const store = createStoreWithMiddleware(reducer, (<any>window).__REDUX_DEVTOOLS_EXTENSION__ && (<any>window).__REDUX_DEVTOOLS_EXTENSION__());
-
+    const createStoreWithMiddleware = compose(
+        applyMiddleware(
+            sagaMiddleware
+        ),
+        DevTools.instrument()
+    )(createStore)(reducer);
+    const store = createStoreWithMiddleware;
+    
     function* rootSaga(): any {
         yield fork(TrackingSaga);
     }
