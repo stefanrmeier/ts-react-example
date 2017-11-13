@@ -126,7 +126,7 @@ export interface Config<FormData extends DataShape, P, S> {
     /**
      * A callback function that will be called when a submission succeeds.
      */
-    onSubmitSuccess?(result: any, dispatch: Dispatch<S>): void;
+    onSubmitSuccess?(result: any, dispatch: Dispatch<S>, props: any): void;
 
     /**
      * Do not remove submit errors when the change action is fired. Defaults to false.
@@ -1559,8 +1559,8 @@ export type FieldType = 'Field' | 'FieldArray';
 export type DataShape = {[fieldName:string]: FieldValue};
 
 export type FormErrors<FormData extends DataShape> = {
-  [P in keyof FormData]?: React.ReactElement<any> | string;
-} & { _error?: string };
+    [P in keyof FormData]?: React.ReactElement<any> | string | { _error?: string };
+};
 
 export type FormWarnings<FormData extends DataShape> = {
   [P in keyof FormData]?: React.ReactElement<any> | string;
