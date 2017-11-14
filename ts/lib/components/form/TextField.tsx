@@ -11,11 +11,29 @@ interface Props {
     required?: boolean;
     error: {
         isError: boolean;
-        message: string;
+        message?: string;
     }
 }
 
-
+/**
+ * Create a input field based on redux-form
+ * 
+ * <pre>
+ * interface Props {
+ *   label: string; //Label shown above the field
+ *   name: string; //name, id of the html field
+ *   type: string; //input type text, email, date
+ *   className: string; //CSS classes
+ *   placeholder: string; //Placeholder (e.g. Type to select)
+ *   helpText?: string;
+ *   required?: boolean; //mandatory field or not
+ *   error: {
+ *       isError: boolean; //if field should be marked as having an error
+ *       message?: string; //error message
+ *   }
+ *  }
+ *  </pre>
+ */
 export class TextField extends React.Component<Props, {}> {
     constructor(props: Props) {
         super(props);
