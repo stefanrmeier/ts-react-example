@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { SubmissionError, submit, reset, initialize } from 'redux-form'
+import { SelectFormFieldFormat } from 'lib/components/SelectFormField';
 
 import { Countries } from './DummyData';
 
@@ -24,10 +25,6 @@ interface FormData {
     phone: string;
     nationality: string;
     holidayDestinations: string;
-}
-
-interface FormError {
-    [index: string]: string
 }
 
 class FormController extends React.Component<Props, State> {
@@ -69,10 +66,7 @@ class FormController extends React.Component<Props, State> {
         //Simulate call to server
         const serverPromise = new Promise((resolve, reject) => {
             setTimeout(function () {
-                const error:FormError = {
-                    name: 'First name can not be empty.'
-                }
-                reject(error);
+                resolve();
             }, 250);
         })
 
@@ -83,7 +77,7 @@ class FormController extends React.Component<Props, State> {
                     success: true
                 })
                 resolve('success'); //trigger onSubmitSuccess on the form
-            }).catch((error: FormError) => {
+            }).catch((error: any) => {
                 reject(new SubmissionError({ _error: error })); //trigger onSubmitFail on the form
             });
         });
@@ -94,9 +88,13 @@ class FormController extends React.Component<Props, State> {
         this.props.submitForm('Form');
     }
     render() {
+        const countries: any = Countries.map((v: any) => {
+            return { key: v.id, id: v.id, value: v.id, label: v.label };
+        });
+
         return (
             <FormView
-                countries={Countries}
+                countries={countries}
                 success={this.state.success}
                 onSubmit={this.handleSubmit}
                 submit={this.submitForm}
