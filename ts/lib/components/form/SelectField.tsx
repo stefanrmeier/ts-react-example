@@ -1,0 +1,49 @@
+import * as React from 'react';
+import { Field } from 'redux-form';
+import { SelectType, OptionFormat } from './SelectType'
+
+interface Props {
+    label: string;
+    name: string;
+    options: Array<OptionFormat>
+    className: string;
+    placeholder: string;
+    multi: boolean;
+    helpText?: string;
+    required?: boolean;
+    error: {
+        isError: boolean;
+        message: string;
+    }
+}
+
+class SelectField extends React.Component<Props, {}> {
+    constructor(props: Props) {
+        super(props);
+    }
+
+    render() {
+        const { label, name, options, multi, className, placeholder, helpText, required, error } = this.props;
+
+        return (
+            <div className={`form-group ${required && 'required' || ''} ${error.isError && 'has-error' || ''}`}>
+                <label className="control-label" htmlFor={name}>{label}</label>
+                <Field
+                    required={required && true}
+                    name={name}
+                    options={options}
+                    component={SelectType}
+                    placeholder={placeholder && placeholder}
+                    multi={multi}
+                />
+                {error.message && <span className="help-block">{error.message}</span>}
+                {helpText && <span className="help-block">{helpText}</span>}
+            </div>
+        );
+    }
+}
+
+export {
+    OptionFormat,
+    SelectField
+}
