@@ -13,10 +13,29 @@ interface Props {
     required?: boolean;
     error: {
         isError: boolean;
-        message: string;
+        message?: string;
     }
 }
-
+/**
+ * Create a select field (dropdown or tag input) based on redux-form
+ * 
+ * <pre>
+ * interface Props {
+ *   label: string; //Label shown above the field
+ *   name: string; //name, id of the html field
+ *   options: Array<OptionFormat> // option array for the tags, dropdwon
+ *   className: string; //CSS classes
+ *   placeholder: string; //Placeholder (e.g. Type to select)
+ *   multi: boolean; //true = taginput, false = dropdown
+ *   helpText?: string;
+ *   required?: boolean; //mandatory field or not
+ *   error: {
+ *       isError: boolean; //if field should be marked as having an error
+ *       message?: string; //error message
+ *   }
+ *  }
+ *  </pre>
+ */
 class SelectField extends React.Component<Props, {}> {
     constructor(props: Props) {
         super(props);
