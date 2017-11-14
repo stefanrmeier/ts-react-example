@@ -2,3 +2,4 @@
 .happypack
 /node_modules
 /dist
+/doc
