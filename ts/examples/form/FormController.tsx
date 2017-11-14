@@ -19,9 +19,10 @@ interface State {
 
 interface FormData {
     name: string;
-    birthDate: string;
+    birthdate: string;
     email: string;
     phone: string;
+    gender: string;
     nationality: string;
     holidayDestinations: string;
 }
@@ -41,9 +42,10 @@ class FormController extends React.Component<Props, State> {
     initForm = () => {
         const formData: FormData = {
             name: 'FirstName LastName',
-            birthDate: '1990-10-01',
+            birthdate: '1990-10-01',
             email: 'test@test.com',
             phone: '+81-8055554444',
+            gender: 'm',
             nationality: 'JPN',
             holidayDestinations: 'CHN,IND'
         }
@@ -54,9 +56,10 @@ class FormController extends React.Component<Props, State> {
     resetForm = () => {
         const formData: FormData = {
             name: null,
-            birthDate: null,
+            birthdate: null,
             email: null,
             phone: null,
+            gender: null,
             nationality: null,
             holidayDestinations: null
         }
@@ -66,6 +69,7 @@ class FormController extends React.Component<Props, State> {
     }
 
     handleSubmit = (values: FormData) => {
+        console.log(values);
         //Simulate call to server
         const serverPromise = new Promise((resolve, reject) => {
             setTimeout(function () {

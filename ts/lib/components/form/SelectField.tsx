@@ -56,7 +56,7 @@ class SelectField extends React.Component<Props, {}> {
                     multi={multi}
                 />
                 {error.message && <span className="help-block">{error.message}</span>}
-                {helpText && <span className="help-block">{helpText}</span>}
+                {helpText && <small className="help-block">{helpText}</small>}
             </div>
         );
     }

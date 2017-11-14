@@ -47,7 +47,7 @@ export class TextField extends React.Component<Props, {}> {
                 <label className="control-label" htmlFor={name}>{label}</label>
                 <Field component="input" type={type} required={required && true} name={name} className={className} placeholder={placeholder && placeholder} />
                 {error.message && <span className="help-block">{error.message}</span>}
-                {helpText && <span className="help-block">{helpText}</span>}
+                {helpText && <small className="help-block">{helpText}</small>}
             </div>
         );
     }
