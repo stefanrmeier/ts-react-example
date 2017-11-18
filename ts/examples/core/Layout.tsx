@@ -7,12 +7,8 @@ class Layout extends React.Component<any, any> {
 	
 	render() {
 		return (
-			<div>
-				<div className="header">Examples (coming soon)</div>
-				<div className="container-fluid">
+			<div style={{ minWidth: '100%' }}>
 					{ this.props.children  }
-				</div>
-				<div className="footer"></div>
 			</div>
 		);
 	}

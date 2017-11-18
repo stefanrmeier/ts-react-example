@@ -30,8 +30,8 @@ class FormView extends React.Component<Props, {}> {
         return (
             <div>
                 <form onSubmit={handleSubmit} noValidate>
-                    {error && <p className="bg-danger" style={{ padding: 15 }}>Some errors have occured. Please check the fields bellow.</p>}
-                    {success && <p className="bg-success" style={{ padding: 15 }}>Saved successfully.</p>}
+                    {error && <p className="alert alert-danger" style={{ padding: 15 }}>Some errors have occured. Please check the fields bellow.</p>}
+                    {success && <p className="alert alert-success" style={{ padding: 15 }}>Saved successfully.</p>}
                     <TextField
                         label="Name"
                         name="name"
@@ -71,7 +71,7 @@ class FormView extends React.Component<Props, {}> {
                     <RadioField
                         label="Gender"
                         name="gender"
-                        className="checkbox-inline checkbox-inline-fix"
+                        className="form-check form-check-inline checkbox-inline-fix"
                         values={[{value: 'f', label: 'F'}, {value: 'm', label: 'M'}]}
                         required={true}
                         error={{
@@ -124,8 +124,8 @@ class FormView extends React.Component<Props, {}> {
                     </div>
                 </form>
                 {/** Don't put into the form, otherwhise it will trigger submit after initialization */}
-                <button onClick={resetForm} className="btn btn-sm btn-default" style={{marginRight: 15}}>Reset form</button>
-                <button onClick={initForm} className="btn btn-sm btn-default">Init form</button>
+                <button onClick={resetForm} className="btn btn-sm btn-secondary" style={{marginRight: 15}}>Reset form</button>
+                <button onClick={initForm} className="btn btn-sm btn-secondary">Init form</button>
             </div>
         );
     }

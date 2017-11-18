@@ -1,11 +1,11 @@
-$color-brand: #2866A7;
+$color-brand: #007bff;
 $color-grey: #cccccc;
 $color-black: #333333;
 $color-white: #ffffff;
 $font-family: "ヒラギノ角ゴ Pro W3", HiraKakuPro-W3, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-@import './bootstrap/bootstrap-custom';
 @import './react-select/default';
 @import './lib/form';
 @import 'spinner';
+@import './page';
 @import 'mobile-nav';
 @import 'dropzone';
